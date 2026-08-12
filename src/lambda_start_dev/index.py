@@ -2,18 +2,10 @@ import boto3
 
 def lambda_handler(event, context):
     regiao = 'us-east-2'
-    ec2 = boto3.client('ec2', region_name=regiao)
     rds = boto3.client('rds', region_name=regiao)
     asg = boto3.client('autoscaling', region_name=regiao)
     
-    contadores = {'ec2': 0, 'rds': 0, 'asg': 0}
-    
-    filtros_ec2 = [{'Name': 'tag:ambiente', 'Values': ['dev']}]
-    for reserva in ec2.describe_instances(Filters=filtros_ec2)['Reservations']:
-        for inst in reserva['Instances']:
-            if inst['State']['Name'] == 'stopped':
-                ec2.start_instances(InstanceIds=[inst['InstanceId']])
-                contadores['ec2'] += 1
+    contadores = {'rds': 0, 'asg': 0}
                 
     for banco in rds.describe_db_instances()['DBInstances']:
         if banco['DBInstanceIdentifier'] == 'banco-dev' and banco['DBInstanceStatus'] == 'stopped':
@@ -30,10 +22,16 @@ def lambda_handler(event, context):
             )
             contadores['asg'] += 1
             
-    relatorio = (f"Ambiente INICIADO (START)! "
-                 f"{contadores['ec2']} EC2 ligadas | "
-                 f"{contadores['rds']} RDS ligados | "
-                 f"{contadores['asg']} ASGs restaurados.")
+    detalhes = []
+    if contadores['rds'] > 0:
+        detalhes.append(f"{contadores['rds']} RDS ligados")
+    if contadores['asg'] > 0:
+        detalhes.append(f"{contadores['asg']} ASGs restaurados")
+        
+    if detalhes:
+        relatorio = f"Ambiente INICIADO (START)! " + " | ".join(detalhes) + "."
+    else:
+        relatorio = "Ambiente INICIADO (START)! Nenhum recurso precisou ser alterado."
                  
     print(relatorio)
                  

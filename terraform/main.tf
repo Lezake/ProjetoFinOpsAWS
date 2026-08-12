@@ -100,15 +100,15 @@ resource "aws_autoscaling_group" "asg_prod" {
 }
 
 resource "aws_db_instance" "banco_dev" {
-  identifier           = "banco-dev"
-  allocated_storage    = 20
-  storage_type         = "gp2"
-  engine               = "mysql"
-  engine_version       = "8.0"
-  instance_class       = "db.t3.micro"
-  username             = "admin"
-  password             = "admin12345"
-  skip_final_snapshot  = true
+  identifier          = "banco-dev"
+  allocated_storage   = 20
+  storage_type        = "gp2"
+  engine              = "mysql"
+  engine_version      = "8.0"
+  instance_class      = "db.t3.micro"
+  username            = var.db_username
+  password            = var.db_password
+  skip_final_snapshot = true
 
   tags = {
     Name     = "banco-dev"
@@ -117,15 +117,15 @@ resource "aws_db_instance" "banco_dev" {
 }
 
 resource "aws_db_instance" "banco_prod" {
-  identifier           = "banco-prod"
-  allocated_storage    = 20
-  storage_type         = "gp2"
-  engine               = "mysql"
-  engine_version       = "8.0"
-  instance_class       = "db.t3.micro"
-  username             = "admin"
-  password             = "admin12345"
-  skip_final_snapshot  = true
+  identifier          = "banco-prod"
+  allocated_storage   = 20
+  storage_type        = "gp2"
+  engine              = "mysql"
+  engine_version      = "8.0"
+  instance_class      = "db.t3.micro"
+  username            = var.db_username
+  password            = var.db_password
+  skip_final_snapshot = true
 
   tags = {
     Name     = "banco-prod"

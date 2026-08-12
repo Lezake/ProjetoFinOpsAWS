@@ -13,7 +13,7 @@ O fluxo de automação é *Serverless* e orientado a eventos:
 * **Segunda-feira (08h):** Restaura a capacidade do ambiente para o início do expediente da equipe de engenharia.
 
 <p align="center">
-  <img src="docs/architecture.png" alt="Diagrama de Arquitetura FinOps AWS" width="800">
+  <img src="docs/architecture.png" alt="Diagrama de Arquitetura FinOps AWS" width="600">
 </p>
 
 ## Evidências de Execução
@@ -22,15 +22,24 @@ Demonstração do ciclo completo da automação e o impacto direto na infraestru
 
 ### 1. Estado Inicial (Horário Comercial)
 > Ambiente de Desenvolvimento operando com recursos provisionados (ASG com instâncias ativas, RDS com status *Disponível* e volumes EBS órfãos gerando custos invisíveis).
-<img src="docs/results/EstadoInicial.png" alt="Ambiente Antes da Automação" width="800">
+
+<p align="center">
+  <img src="docs/results/EstadoInicial.png" alt="Ambiente Antes da Automação" width="600">
+</p>
 
 ### 2. Observabilidade e Logs (CloudWatch)
-> Registros de execução das funções Lambda acionadas pelo EventBridge. Os logs evidenciam a atuação nos recursos de Desenvolvimento via filtro de *tags*, validando a rotina de Start (Segunda-feira) e o Stop (Sexta-feira), com destaque para a **exclusão automática de 2 discos (EBS)**.
-<img src="docs/results/FinOps.png" alt="Logs do CloudWatch" width="800">
+> Registros de execução das funções Lambda acionadas pelo EventBridge. Os logs evidenciam a atuação nos recursos de Desenvolvimento via filtro de *tags*, validando a rotina de Stop (Sexta-feira) e Start (Segunda-feira), com destaque para a **exclusão automática de 2 discos EBS órfãos**.
+
+<p align="center">
+  <img src="docs/results/FinOps.png" alt="Logs do CloudWatch" width="800">
+</p>
 
 ### 3. Estado Final (Redução de Custos Aplicada)
 > Comprovação da infraestrutura desalocada: Auto Scaling Group com instâncias encerradas, RDS com status *Parado temporariamente* e a limpeza dos volumes EBS confirmada (redução de 5 para 1 volume faturado), mantendo o isolamento seguro da Produção.
-<img src="docs/results/EstadoFinal.png" alt="Painel EC2 e RDS evidenciando a redução" width="800">
+
+<p align="center">
+  <img src="docs/results/EstadoFinal.png" alt="Painel EC2 e RDS evidenciando a redução" width="600">
+</p>
 
 ---
 

@@ -24,7 +24,7 @@ Demonstração do ciclo completo da automação e o impacto direto na infraestru
 > Ambiente de Desenvolvimento operando com recursos provisionados (ASG com instâncias ativas, RDS com status *Disponível* e volumes EBS órfãos gerando custos invisíveis).
 
 <p align="center">
-  <img src="docs/results/EstadoInicial.png" alt="Ambiente Antes da Automação" width="500">
+  <img src="docs/results/EstadoInicial.png" alt="Ambiente Antes da Automação" width="600">
 </p>
 
 ### 2. Observabilidade e Logs (CloudWatch)

@@ -28,7 +28,7 @@ Demonstração do ciclo completo da automação e o impacto direto na infraestru
 </p>
 
 ### 2. Observabilidade e Logs (CloudWatch)
-> Registros de execução das funções Lambda acionadas pelo EventBridge. Os logs evidenciam a atuação nos recursos de Desenvolvimento via filtro de *tags*, validando a rotina de Start (Segunda-feira) e o Stop (Sexta-feira), com destaque para a **exclusão automática de 2 discos (EBS)**.
+> Registros de execução das funções Lambda acionadas pelo EventBridge. Os logs evidenciam a atuação nos recursos de Desenvolvimento via filtro de *tags*, validando a rotina de Stop (Sexta-feira) e Start (Segunda-feira), com destaque para a **exclusão automática de 2 discos (EBS)**.
 
 <p align="center">
   <img src="docs/results/FinOps.png" alt="Logs do CloudWatch" width="800">

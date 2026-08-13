@@ -24,7 +24,7 @@ Demonstração do ciclo completo da automação e o impacto direto na infraestru
 > Ambiente de Desenvolvimento operando com recursos provisionados (ASG com instâncias ativas, RDS com status *Disponível* e volumes EBS órfãos gerando custos invisíveis).
 
 <p align="center">
-  <img src="docs/results/EstadoInicial.png" alt="Ambiente Antes da Automação" width="600">
+  <img src="docs/results/EstadoInicial.png" alt="Ambiente Antes da Automação" width="500">
 </p>
 
 ### 2. Observabilidade e Logs (CloudWatch)
@@ -38,7 +38,7 @@ Demonstração do ciclo completo da automação e o impacto direto na infraestru
 > Comprovação da infraestrutura desalocada: Auto Scaling Group com instâncias encerradas, RDS com status *Parado temporariamente* e a limpeza dos volumes EBS confirmada (redução de 5 para 1 volume faturado), mantendo o isolamento seguro da Produção.
 
 <p align="center">
-  <img src="docs/results/EstadoFinal.png" alt="Painel EC2 e RDS evidenciando a redução" width="600">
+  <img src="docs/results/EstadoFinal.png" alt="Painel EC2 e RDS evidenciando a redução" width="500">
 </p>
 
 ---

@@ -47,7 +47,7 @@ Demonstração do ciclo completo da automação e o impacto direto na infraestru
 
 A solução foi desenvolvida com foco em automação e segurança:
 
-* **Infraestrutura como Código (IaC):** O provisionamento completo (ambientes e recursos de automação) foi construído utilizando **Terraform**.
+* **Infraestrutura como Código (IaC): O provisionamento dos ambientes de desenvolvimento e produção (EC2, Auto Scaling e RDS) foi construído utilizando Terraform, enquanto a automação de redução de custos foi orquestrada via AWS Lambda e EventBridge**.
 * **Isolamento por Tags:** A rotina em Python (Boto3) atua exclusivamente nos recursos mapeados com a tag `ambiente=dev`.
 * **Segurança (Least Privilege):** As IAM Roles foram configuradas com políticas restritas, concedendo apenas as permissões necessárias (Stop, Start, Delete) para serviços específicos.
 * **Gestão de Desperdício:** O script identifica e exclui proativamente volumes EBS residuais (buscando pelo status da API `available`), mitigando custos invisíveis.
